@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overscroll-behavior: none;
+}
 
 body{
   background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/bgi.jpg');

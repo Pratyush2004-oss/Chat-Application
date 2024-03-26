@@ -1,8 +1,24 @@
-import React from 'react'
-import GenderRadio from './GenderRadio'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import UseSignup from '../../Hooks/UseSignup.js'
 
 
 const Signup = () => {
+    const [input, setinput] = useState({
+        fullname: '',
+        username: '',
+        password: '',
+        confirmPassword: '',
+        gender: '',
+    })
+
+    const { loading, signup } = UseSignup()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await signup(input)
+    };
+
     return (
         <div>
             <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
@@ -12,7 +28,7 @@ const Signup = () => {
                         Register Yourself</h1>
 
 
-                    <form className='m-7'>
+                    <form className='m-7' onSubmit={handleSubmit}>
 
                         {/* input for Name */}
                         <div>
@@ -24,6 +40,8 @@ const Signup = () => {
                                 <input
                                     type="text"
                                     className="grow"
+                                    value={input.fullname}
+                                    onChange={(e) => setinput({ ...input, fullname: e.target.value })}
                                     placeholder="Enter Fullname"
                                     autoComplete='off' />
                             </label>
@@ -40,6 +58,8 @@ const Signup = () => {
                                     type="text"
                                     className="grow"
                                     placeholder="Enter username"
+                                    value={input.username}
+                                    onChange={(e) => setinput({ ...input, username: e.target.value })}
                                     autoComplete='off' />
                             </label>
                         </div>
@@ -55,6 +75,8 @@ const Signup = () => {
                                     type="password"
                                     className="grow"
                                     placeholder="Enter Password"
+                                    value={input.password}
+                                    onChange={(e) => setinput({ ...input, password: e.target.value })}
                                     autoComplete='off' />
                             </label>
                         </div>
@@ -69,6 +91,8 @@ const Signup = () => {
                                 <input
                                     type="password"
                                     className="grow"
+                                    value={input.confirmPassword}
+                                    onChange={(e) => setinput({ ...input, confirmPassword: e.target.value })}
                                     placeholder="Confirm Password"
                                     autoComplete='off' />
                             </label>
@@ -80,15 +104,44 @@ const Signup = () => {
                             </label>
 
                             {/* Gender Checkbox */}
-                            <GenderRadio/>
-                            
+                            <div>
+                                <div className="form-control">
+                                    <label className="label cursor-pointer justify-normal">
+                                        <input
+                                            type="radio"
+                                            name="Gender"
+                                            value="Female"
+                                            className="radio checked:bg-red-500"
+                                            onChange={(e) => setinput({ ...input, gender: e.target.value })}
+                                        />
+                                        <span className="label-text mx-5 text-red-500">Female</span>
+                                    </label>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label cursor-pointer justify-normal">
+                                        <input
+                                            type="radio"
+                                            name="Gender"
+                                            value="Male"
+                                            className="radio checked:bg-blue-500"
+                                            onChange={(e) => setinput({ ...input, gender: e.target.value })}
+                                        />
+                                        <span className="label-text mx-5 text-blue-500">Male</span>
+                                    </label>
+                                </div>
+                            </div>
+
 
                         </div>
-                        <a href='#' className='text-sm hover-underline hover:text-blue-600 mt-2 inline-block'>
+                        <Link to={'/login'} className='text-sm hover-underline hover:text-blue-600 mt-2 inline-block'>
                             Already Registered?
-                        </a>
+                        </Link>
                         <div>
-                            <button className='btn btn-block btn-success btn-sm mt-2'>Register</button>
+                            <button
+                                className='btn btn-block btn-success btn-sm mt-2 border-slate-900'
+                                disabled={loading}>
+                                {loading ? <span className='loading loading-spinner'></span> : "Register"}
+                            </button>
                         </div>
                     </form>
                 </div>

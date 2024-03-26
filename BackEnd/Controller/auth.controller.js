@@ -63,9 +63,13 @@ export const loginUser = async (req, res) => {
         const { username, password } = req.body;
         const user = await UserData.findOne({ username });
 
-        // checking whether the paseword match or the user even exist
+        // check whether the user exist or not 
+        if (!user) return res.status(400).json({ error: 'User does not exist' });
+
+
+        // checking whether the paseword match
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
-        if (!user || !isPasswordCorrect) {
+        if (!isPasswordCorrect) {
             return res.status(400).json({ error: 'Invalid Credentials (Username or Password)' })
         }
 
