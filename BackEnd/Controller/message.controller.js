@@ -41,26 +41,24 @@ export const sendMessage = async (req, res) => {
 }
 
 // to display the message 
-export const getMessage = async (req,res) => {
+export const getMessage = async (req, res) => {
     try {
-        const {id:usertoChatId} = req.params;
+        const { id: usertoChatId } = req.params;
         const SenderID = req.user._id;
-        
+
         const conversation = await Conversation.findOne({
-            participants: { $all: [SenderID, usertoChatId] }
+            participants: { $all: [SenderID, usertoChatId] },
         }).populate("messages");            //not references but messages itself 
 
         // if there is no conversation between the sender and the reciever then it will display the empty data and prevent the error
-        if(!conversation){
-            res.status(200).json([])
-        }
+        if (!conversation) return res.status(200).json([])
 
         const messages = conversation.messages;
 
         res.status(200).json(messages);
 
     } catch (error) {
-        console.error("Error in getMessage Controller : " , error.message)
-        res.status(500).json({error:"Internal Server Error"})
+        console.error("Error in getMessage Controller : ", error.message)
+        res.status(500).json({ error: "Internal Server Error" })
     }
 }

@@ -9,6 +9,7 @@ const Sidebar = () => {
             <Searchbar />
             <div className='divider px-3'></div>
             <Conversations />
+            <div className='divider px-3'></div>
             <Logout />
         </div>
     )

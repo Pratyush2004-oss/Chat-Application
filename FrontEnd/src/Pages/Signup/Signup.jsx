@@ -28,12 +28,12 @@ const Signup = () => {
                         Register Yourself</h1>
 
 
-                    <form className='m-7' onSubmit={handleSubmit}>
+                    <form className='m-4' onSubmit={handleSubmit}>
 
                         {/* input for Name */}
                         <div>
                             <label className='label p-2'>
-                                <span className='text-base label-text'>Full Name</span>
+                                <span className='text-base label-text font-bold text-black'>Full Name</span>
                             </label>
                             <label className="input input-bordered flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
@@ -50,7 +50,7 @@ const Signup = () => {
                         {/* input for Username */}
                         <div>
                             <label className='label p-2'>
-                                <span className='text-base label-text'>Username</span>
+                                <span className='text-base label-text font-bold text-black'>Username</span>
                             </label>
                             <label className="input input-bordered flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
@@ -67,7 +67,7 @@ const Signup = () => {
                         {/* input for password */}
                         <div>
                             <label className='label p-2'>
-                                <span className='text-base label-text'>Password</span>
+                                <span className='text-base label-text font-bold text-black'>Password</span>
                             </label>
                             <label className="input input-bordered flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
@@ -79,12 +79,13 @@ const Signup = () => {
                                     onChange={(e) => setinput({ ...input, password: e.target.value })}
                                     autoComplete='off' />
                             </label>
+                            <span className='text-yellow-500'>Enter atleast 8 characters</span>
                         </div>
 
                         {/* input for Confirm password */}
                         <div>
                             <label className='label p-2'>
-                                <span className='text-base label-text'>Confirm Password</span>
+                                <span className='text-base label-text font-bold text-black'>Confirm Password</span>
                             </label>
                             <label className="input input-bordered flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
@@ -100,7 +101,7 @@ const Signup = () => {
 
                         <div>
                             <label className='label p-2'>
-                                <span className='text-base label-text'>Gender</span>
+                                <span className='text-base label-text font-bold'>Gender</span>
                             </label>
 
                             {/* Gender Checkbox */}
@@ -111,7 +112,7 @@ const Signup = () => {
                                             type="radio"
                                             name="Gender"
                                             value="Female"
-                                            className="radio checked:bg-red-500"
+                                            className="radio checked:bg-red-800 border border-red-400"
                                             onChange={(e) => setinput({ ...input, gender: e.target.value })}
                                         />
                                         <span className="label-text mx-5 text-red-500">Female</span>
@@ -123,7 +124,7 @@ const Signup = () => {
                                             type="radio"
                                             name="Gender"
                                             value="Male"
-                                            className="radio checked:bg-blue-500"
+                                            className="radio checked:bg-blue-800 border border-blue-400"
                                             onChange={(e) => setinput({ ...input, gender: e.target.value })}
                                         />
                                         <span className="label-text mx-5 text-blue-500">Male</span>

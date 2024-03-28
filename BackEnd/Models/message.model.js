@@ -8,12 +8,12 @@ const messageSchema = mongoose.Schema({
     }, // the author of this message
     RecieverID: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'UserData' ,
+        ref: 'User' ,
         required: true
     }, // the author of this message
     message:{
         type : String,
-        required :true,
+        required : true,
     }
     // createdAt, updatedAt
 },{timestamps: true});
