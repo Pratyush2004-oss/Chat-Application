@@ -4,7 +4,7 @@ import protectRoute from "../Middleware/protextroute.js";
 
 const router = express.Router()
 
-router.get('/:id', protectRoute, getMessage)
 router.post("/send/:id", protectRoute, sendMessage)
+router.get('/:id', protectRoute, getMessage)
 
 export default router;
